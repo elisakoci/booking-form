@@ -48,15 +48,7 @@ const ContactDetails = ({ nextStep, updateFormData }) => {
   const submitContactDetails = (e) => {
     e.preventDefault();
 
-    submitStep({
-      formData,
-      errors,
-      setErrors,
-      onSuccess: () => {
-        updateFormData(1, formData);
-        nextStep();
-      },
-    });
+    submitStep(1, formData, updateFormData, nextStep, setErrors);
   };
 
   return (
