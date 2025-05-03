@@ -43,7 +43,7 @@ const FormStepRenderer = ({
     <div className="form-step-container">
       {/* Render the component for the current step */}
       {/* Use the stepComponents object and the step prop to render the correct component */}
-      {stepComponents[step]}
+      {stepComponents[step] || <p>Unkmown step: {step}</p>}
     </div>
   );
 };

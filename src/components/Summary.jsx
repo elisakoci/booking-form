@@ -1,27 +1,26 @@
 import React from "react";
 
+import SummarySection from "./SummarySection";
+import CommonButton from "./CommonButton";
+
 import eventTypes from "../constants/eventTypes";
 import roomTypes from "../constants/roomTypes";
 import services from "../constants/services";
 
 // Receive the formData, submitForm, and creatingReservation props
-const Summary = (
-  {
-    // ...
-  }
-) => {
+const Summary = ({ formData, submitForm, creatingReservation }) => {
   const contactDetails = formData[1];
-  const eventDetails = formData[2];
+  const eventDetails = formData[2] || {};
   const additionalServices = formData[3]?.additionalServices || [];
 
   const roomCost = roomTypes.find(
     (roomType) => roomType.value === eventDetails.roomType
-  ).price;
+  )?.price || 0;
 
   const additionalServicesCost = additionalServices.reduce(
     (total, additionalService) =>
       total +
-      services.find((service) => service.value === additionalService).price,
+      services.find((service) => service.value === additionalService)?.price || 0,
     0
   );
 
@@ -106,25 +105,33 @@ const Summary = (
       {/* Render a SummarySection component */}
       {/* It should have a title of "Contact Details" */}
       {/* It should display the contactDetailsData */}
-      {/* ... */}
+      <SummarySection title="Contact Details" data={contactDetailsData} />
       {/* Render a SummarySection component */}
       {/* It should have a title of "Event Details" */}
       {/* It should display the eventDetailsData */}
-      {/* ... */}
+      <SummarySection title="Event Details" data={eventDetailsData} />
       {/* Render a SummarySection component */}
       {/* It should have a title of "Additional Services" */}
       {/* It should display the additionalServicesData */}
-      {/* ... */}
+      <SummarySection
+        title="Additional Services"
+        data={additionalServicesData}
+      />
       {/* Render a SummarySection component */}
       {/* It should have a title of "Cost" */}
       {/* It should display the costData */}
-      {/* ... */}
+      <SummarySection title="Cost" data={costData} />
       {/* Render a CommonButton component for the submit button */}
       {/* It should have a type of "submit" */}
       {/* It should have a text of "Confirm Booking" */}
       {/* It should call the submitForm function when clicked */}
       {/* It should have a loading prop set to the creatingReservation prop */}
-      {/* ... */}
+      <CommonButton
+        type="submit"
+        text="Confirm Booking"
+        onClick={submitForm}
+        loading={creatingReservation}
+      />
     </div>
   );
 };
