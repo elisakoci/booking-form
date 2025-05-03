@@ -39,7 +39,7 @@ const EventDetails = ({ nextStep, updateFormData }) => {
   // It should also update the errors state with the result of the validateFormField helper function
   // The validateFormField function should be called with the right arguments
   const handleFormChange = (e) => {
-    const [name, value] = e.target;
+    const { name, value } = e.target;
 
     setFormData((prevFormData) => ({
       ...prevFormData,
