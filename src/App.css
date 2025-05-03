@@ -1,0 +1,349 @@
+html,
+body {
+  --default-text-color: #333;
+  --default-background-color: #f5f5f5;
+  --default-border-color: #ccc;
+  --default-border-radius: 0.75rem;
+  --default-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --default-transition: all 0.3s ease-in-out;
+  --small-space: 0.5rem;
+  --medium-space: 1rem;
+  --large-space: 3rem;
+  --default-font-size: 16px;
+  --default-line-height: 1.6;
+  --default-font-family: 'Roboto', sans-serif;
+
+  margin: 0;
+  padding: 0;
+  font-family: var(--default-font-family);
+  background-color: var(--default-background-color);
+  color: var(--default-text-color);
+  font-size: var(--default-font-size);
+  line-height: var(--default-line-height);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body > div {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+input[type='radio'],
+input[type='checkbox'] {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* HTML: <div class="loader"></div> */
+.spinner {
+  --_m:
+    conic-gradient(#0000 10%, #000),
+    linear-gradient(#000 0 0) content-box;
+
+  width: 1.1rem;
+  padding: 0.2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--default-text-color);
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+  box-sizing: border-box;
+}
+
+@keyframes l3 {
+  to {
+    transform: rotate(1turn)
+  }
+}
+
+.horizontal-line {
+  border-top: 1px solid var(--default-border-color);
+}
+
+.input-group {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--small-space);
+}
+
+.input-group label,
+.input-group .group-label {
+  font-size: 0.875rem;
+  user-select: none;
+}
+
+.input-group.required label::after,
+.input-group.required .group-label::after {
+  content: ' *';
+  color: #FF0000;
+}
+
+.input-group input,
+.input-group select {
+  padding: var(--small-space);
+  border: 1px solid var(--default-border-color);
+  border-radius: var(--default-border-radius);
+  transition: var(--default-transition);
+  font-family: inherit;
+  font-size: 0.875rem;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #298FB3;
+}
+
+.input-group select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right var(--small-space) top 50%;
+  background-size: 1.5rem;
+}
+
+.input-group .error {
+  color: #FF0000;
+  font-size: 0.75rem;
+  min-height: 0.75rem;
+  line-height: 1;
+  user-select: none;
+  opacity: 0;
+  transition: var(--default-transition);
+}
+
+.input-group .error.visible {
+  opacity: 1;
+}
+
+.input-group.radio-group,
+.input-group.checkbox-group {
+  grid-column: 1 / -1;
+}
+
+.input-group .radio-elements-container,
+.input-group .checkbox-elements-container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--small-space);
+}
+
+.input-group .radio-element,
+.input-group .checkbox-element {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--small-space);
+  cursor: pointer;
+  user-select: none;
+}
+
+.input-group .radio-element input,
+.input-group .checkbox-element input {
+  height: auto;
+  cursor: inherit;
+}
+
+.input-group .radio-element label,
+.input-group .checkbox-element label {
+  cursor: inherit;
+}
+
+.input-group .radio-element label::after,
+.input-group .checkbox-element label::after {
+  display: none;
+}
+
+.common-button {
+  padding: var(--medium-space);
+  border: none;
+  border-radius: var(--default-border-radius);
+  background-color: #FE4500;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--default-transition);
+  user-select: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--small-space);
+}
+
+.common-button:hover {
+  background-color: #FF5A00;
+}
+
+.common-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.common-button .button-spinner {
+  background-color: #fff;
+}
+
+.app-container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--medium-space);
+}
+
+.booking-form {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--large-space);
+  padding: var(--large-space);
+  margin: var(--medium-space);
+  background-color: #fff;
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow);
+  transition: var(--default-transition);
+}
+
+.form-header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: normal;
+  color: #124D68;
+}
+
+.step-indicator {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--small-space);
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 var(--large-space);
+  position: relative;
+}
+
+.step-indicator::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 1px);
+  width: 100%;
+  border-top: 2px dashed #298FB3;
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+.step-indicator .step {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #298FB3;
+  transition: var(--default-transition);
+  z-index: 1;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  user-select: none;
+  position: relative;
+}
+
+.step-indicator .step::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 10px solid #fff;
+  box-sizing: border-box;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.step-indicator .step.active {
+  background-color: #298FB3;
+  outline: 2px solid #298FB3;
+  outline-offset: 2px;
+}
+
+.instructions {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--small-space);
+}
+
+.instructions h1 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.instructions p {
+  font-size: 0.875rem;
+}
+
+.form-step-container form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--medium-space);
+}
+
+.form-step-container form .common-button-container {
+  grid-column: 1 / -1;
+  margin-top: calc(var(--medium-space) * 2);
+}
+
+.summary {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--medium-space);
+}
+
+.summary .common-button-container {
+  margin-top: calc(var(--medium-space) * 2);
+}
+
+.summary .summary-section {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--small-space);
+  padding: var(--medium-space);
+  border: 1px solid var(--default-border-color);
+  border-radius: var(--default-border-radius);
+  max-width: 400px;
+}
+
+.summary .summary-section .title {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.summary .summary-section .field {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--small-space);
+  align-items: center;
+  border-bottom: 1px dashed var(--default-border-color);
+}
+
+.summary .summary-section .field .label {
+  flex: 1;
+  font-size: 0.875rem;
+}
+
+.summary .summary-section .field .value {
+  font-size: 0.875rem;
+}
