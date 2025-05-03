@@ -22,17 +22,26 @@ const AdditionalServices = ({ nextStep, updateFormData }) => {
   // It should update the formData state with the new value
   // It should also update the errors state with the result of the validateFormField helper function
   // The validateFormField function should be called with the right arguments
-  const handleFormChange = () => {
-    const { name, value } = errors.target;
+  const handleFormChange = (e) => {
+    const { name, value, checked } = e.target;
+
+    //checkbox-i
+    let updatedValue = [...formData[name]]; //copy of current array
+    // nese chweckbox is checked , push the value in array perndryshe remove
+    if (checked) {
+      updatedValue.push(value);
+    } else {
+      updatedValue = updatedValue.filter((service) => service !== value);
+    }
 
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: updatedValue,
     }));
 
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: validateFormField(name, value),
+      [name]: validateFormField(name, updatedValue),
     }));
   };
 
