@@ -42,7 +42,7 @@ const BookingForm = () => {
         },
       };
       console.log(`1111 step ${stepName}):`, updatedFormData);
-      return updateFormData;
+      return updatedFormData;
     });
   };
 

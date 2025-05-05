@@ -10,17 +10,17 @@ import services from "../constants/services";
 // Receive the formData, submitForm, and creatingReservation props
 const Summary = ({ formData, submitForm, creatingReservation }) => {
   const contactDetails = formData[1];
-  const eventDetails = formData[2] || {};
-  const additionalServices = formData[3]?.additionalServices || [];
+  const eventDetails = formData[2];
+  const additionalServices = formData[3]?.additionalServices;
 
   const roomCost = roomTypes.find(
     (roomType) => roomType.value === eventDetails.roomType
-  )?.price || 0;
+  ).price || 0;
 
   const additionalServicesCost = additionalServices.reduce(
     (total, additionalService) =>
       total +
-      services.find((service) => service.value === additionalService)?.price || 0,
+      services.find((service) => service.value === additionalService).price || 0,
     0
   );
 
